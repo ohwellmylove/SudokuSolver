@@ -1,13 +1,27 @@
+import time
+
+class color:
+    PURPLE = '\033[95m'
+    CYAN = '\033[96m'
+    DARKCYAN = '\033[36m'
+    BLUE = '\033[94m'
+    GREEN = '\033[92m'
+    YELLOW = '\033[93m'
+    RED = '\033[91m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+    END = '\033[0m'
+
 board = [
-    [7,8,0,4,0,0,1,2,0],
-    [6,0,0,0,7,5,0,0,9],
-    [0,0,0,6,0,1,0,7,8],
-    [0,0,7,0,4,0,2,6,0],
-    [0,0,1,0,5,0,9,3,0],
-    [9,0,4,0,6,0,0,0,5],
-    [0,7,0,3,0,0,0,1,2],
-    [1,2,0,0,0,7,4,0,0],
-    [0,4,9,2,0,6,0,0,7]
+    [0,4,0,3,5,7,8,1,2],
+    [3,8,0,2,9,0,0,0,0],
+    [1,2,0,6,0,4,7,0,3],
+    [4,6,9,0,0,0,0,0,7],
+    [0,3,1,0,6,0,2,4,9],
+    [0,5,2,4,3,0,1,8,0],
+    [0,0,8,9,7,0,0,2,5],
+    [0,9,4,5,0,6,3,7,0],
+    [5,0,0,0,0,0,0,0,0]
 ]
 
 
@@ -20,6 +34,10 @@ def solve(bo):
         row, col = find
 
     #attempting to insert num
+    time.sleep(.5)
+    print_board(board)
+    print("---------------------")
+
     for i in range(1,10):
         if valid(bo, i, (row, col)):
             bo[row][col] = i
@@ -27,7 +45,7 @@ def solve(bo):
             if solve(bo):
                 return True
 
-            bo[row][col] = 0
+            bo[row][col] = 0 
 
     return False
 
@@ -75,9 +93,7 @@ def find_empty(bo):
                 return (i, j) #row, Col
     return None
 
-print_board(board)
 solve(board)
-print("---------------------")
 print_board(board)
 
 #TODO Design and implement GUI
