@@ -34,7 +34,7 @@ def solve(bo):
         row, col = find
 
     #attempting to insert num
-    time.sleep(.5)
+    time.sleep(.2)
     print_board(board)
     print("---------------------")
 
